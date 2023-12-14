@@ -26,7 +26,7 @@ function PostDetails () {
   if (!post) return <h2>Loading...</h2>
 
   return (
-    <div>
+    <div className="post-container">
       <h2>{post.title}</h2>
       <p>{post.body}</p>
       <Link to="/">Back to Posts List</Link>

@@ -9,9 +9,9 @@ function App() {
   return (
     <Router>
       <div className='app'>
+        <NavBar />
         <h1>React on Rails</h1>
         <p>Find this application layout in src/App.js</p>
-        <NavBar />
         <AppRoutes />
       </div>
     </Router>
