@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { API_URL } from "../../constants";
 
 function PostDetails () {
@@ -20,6 +20,7 @@ function PostDetails () {
         console.log("An error occurred:", error);
       }
     };
+
     fetchCurrentPost();
   }, [id]);
 

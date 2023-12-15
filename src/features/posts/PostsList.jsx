@@ -1,6 +1,6 @@
 //API comes from .env.development file
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { API_URL } from '../../constants';
 
 function PostsList() {
@@ -26,6 +26,7 @@ useEffect(() => {
       setLoading(false);
     }
   }
+
   loadPosts();
 }, []);
 
