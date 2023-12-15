@@ -36,6 +36,9 @@ useEffect(() => {
         <div key={post.id} className="post-container">
           <Link to={`posts/${post.id}`}>{post.title}</Link>
           <p>{post.body}</p>
+          <br />
+          <span> <Link to={`posts/${post.id}/edit`}>Edit</Link> </span>
+          <span> Delete </span>
         </div>
       ))}
     </div>
