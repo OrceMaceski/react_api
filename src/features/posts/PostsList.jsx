@@ -30,15 +30,34 @@ useEffect(() => {
   loadPosts();
 }, []);
 
+// Delete a post
+const deletePost = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      const deletedPosts = posts.filter((post) => post.id !== id);
+      setPosts(deletedPosts);
+    } else {
+      throw response;
+    }
+  } catch (e) {
+    console.error("Error occured", e);
+  }
+}
+
   return (
     <div>
       {posts.map((post) => (
         <div key={post.id} className="post-container">
           <Link to={`posts/${post.id}`}>{post.title}</Link>
-          <p>{post.body}</p>
+          {/* <p>{post.body}</p> */}
+          <div className="post-links">
+          </div>
           <br />
           <span> <Link to={`posts/${post.id}/edit`}>Edit</Link> </span>
-          <span> Delete </span>
+            <button onClick={()=> deletePost(post.id)}>Delete</button>
         </div>
       ))}
     </div>
