@@ -57,7 +57,7 @@ const deletePost = async (id) => {
           </div>
           <br />
           <span> <Link to={`posts/${post.id}/edit`} className='bg-blue-500 m-2 px-4 py-1 text-white rounded-md'>Edit</Link> </span>
-          <button onClick={()=> deletePost(post.id)} className='bg-red-500 m-2 px-2 py-1 text-white rounded-md'>Delete</button>
+          <button onClick={()=> {if(window.confirm('Are you sure?')) deletePost(post.id)}} className='bg-red-500 m-2 px-2 py-1 text-white rounded-md'>Delete</button>
         </div>
       ))}
     </div>

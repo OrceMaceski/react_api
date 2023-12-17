@@ -48,7 +48,7 @@ function PostDetails () {
       <p className="p-4">{post.body}</p>
       <div className="flex gap-2">
         <Link to="/" className="bg-blue-500 rounded-md px-6 py-2 text-white">Back</Link>
-        <button  onClick={()=> deletePost()} className="bg-red-600 rounded-md px-6 py-2 text-white"> Delete </button>
+        <button  onClick={()=> {if(window.confirm('Are you sure?')) deletePost()}} className="bg-red-600 rounded-md px-6 py-2 text-white"> Delete </button>
       </div>
     </div>
   );
