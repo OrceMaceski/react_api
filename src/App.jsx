@@ -8,10 +8,10 @@ function App() {
 
   return (
     <Router>
-      <div className='app'>
         <NavBar />
-        <h1>React on Rails</h1>
-        <p>Find this application layout in src/App.js</p>
+      <div className='app'>
+        {/* <h1>React on Rails</h1>
+        <p className='mb-8'>Find this application layout in src/App.js</p> */}
         <AppRoutes />
       </div>
     </Router>
