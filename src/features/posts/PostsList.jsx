@@ -1,7 +1,7 @@
 //API comes from .env.development file
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { API_URL } from '../../constants';
+import { deletePost as deletePostService, fetchAllPosts  } from '../../../api/postService';
 
 function PostsList() {
   const [posts, setPosts] = useState([]);
@@ -12,17 +12,11 @@ function PostsList() {
 useEffect(() => {
   async function loadPosts() {
     try {
-      const response = await fetch(API_URL);
-      if (response.ok) {
-        const json = await response.json();
-        setPosts(json);
-      } else {
-          throw response;
-      }
+      const data = await fetchAllPosts();
+      setPosts(data);
+      setLoading(false);
     } catch (error) {
-      setError("An error occurred. Awkward...");
-      console.log("An error occurred:", error);
-    } finally {
+      setError(error);
       setLoading(false);
     }
   }
@@ -33,17 +27,10 @@ useEffect(() => {
 // Delete a post
 const deletePost = async (id) => {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
-      method: 'DELETE',
-    });
-    if (response.ok) {
-      const deletedPosts = posts.filter((post) => post.id !== id);
-      setPosts(deletedPosts);
-    } else {
-      throw response;
-    }
+    await deletePostService(id); //this because duplicate functions name
+    setPosts(posts.filter((post) => post.id !== id));
   } catch (e) {
-    console.error("Error occured", e);
+    console.error("Error occured: ", e);
   }
 }
 
