@@ -25,6 +25,7 @@ function PostDetails () {
     fetchCurrentPost();
   }, [id]);
 
+  // Delete post
   const deletePost = async () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, {
@@ -43,7 +44,7 @@ function PostDetails () {
   if (!post) return <h2>Loading...</h2>
 
   return (
-    <div className="container mx-auto flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <h2 className="font-semibold p-4">{post.title}</h2>
       <p className="p-4">{post.body}</p>
       <div className="flex gap-2">

@@ -50,14 +50,13 @@ const deletePost = async (id) => {
   return (
     <div>
       {posts.map((post) => (
-        <div key={post.id} className="post-container">
-          <Link to={`posts/${post.id}`} className='text-blue-800 font-semibold'>{post.title}</Link>
+        <div key={post.id} className='flex flex-col items-center my-8'>
+          <Link to={`posts/${post.id}`} className='text-blue-800 font-semibold mb-2'>{post.title}</Link>
           {/* <p>{post.body}</p> */}
-          <div className="post-links">
+          <div>
+            <span> <Link to={`posts/${post.id}/edit`} className='bg-blue-600 text-white font-bold py-2 px-4 rounded'>Edit</Link> </span>
+            <button onClick={()=> {if(window.confirm('Are you sure?')) deletePost(post.id)}} className='bg-red-600 m-2 font-bold px-2 py-[6px] text-white rounded'>Delete</button>
           </div>
-          <br />
-          <span> <Link to={`posts/${post.id}/edit`} className='bg-blue-500 m-2 px-4 py-1 text-white rounded-md'>Edit</Link> </span>
-          <button onClick={()=> {if(window.confirm('Are you sure?')) deletePost(post.id)}} className='bg-red-500 m-2 px-2 py-1 text-white rounded-md'>Delete</button>
         </div>
       ))}
     </div>

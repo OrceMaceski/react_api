@@ -29,13 +29,14 @@ function NewPostForm() {
   }
 
   return (
-    <>
-      <h2>Create new post</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='flex flex-col items-center'>
+      <h2 className='font-bold'>Create new post</h2>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center'>
         <div>
           <label htmlFor="titleInput">Title:</label>
           <input
             id="titleInput"
+            className='input'
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)}
@@ -44,8 +45,9 @@ function NewPostForm() {
         </div>
         <div>
           <label htmlFor="bodyInput">Body:</label>
-          <input
+          <textarea
             id="bodyInput"
+            className='input'
             type="text"
             value={body}
             onChange={e => setBody(e.target.value)}
@@ -53,10 +55,10 @@ function NewPostForm() {
             />
           </div>
           <div>
-            <button type="submit">Create post</button>
+            <button type="submit" className='btn btn-primary my-2'>Create post</button>
           </div>
       </form>
-    </>
+    </div>
   )
 }
 

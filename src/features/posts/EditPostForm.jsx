@@ -69,6 +69,7 @@ function EditPostForm() {
           <label htmlFor="post-title">Title:</label>
           <input
             id="post-title"
+            className='input'
             type="text"
             value={post.title}
             onChange={e => setPost({ ...post, title: e.target.value })}
@@ -77,8 +78,9 @@ function EditPostForm() {
         </div>
         <div>
           <label htmlFor="post-body">Body:</label>
-          <input
+          <textarea
             id="post-body"
+            className='input'
             type="text"
             value={post.body}
             onChange={e => setPost({ ...post, body: e.target.value })}
@@ -86,7 +88,7 @@ function EditPostForm() {
             />
           </div>
           <div>
-            <button type="submit">Edit post</button>
+            <button type="submit" className='btn btn-primary my-2'>Edit post</button>
           </div>
       </form>
 

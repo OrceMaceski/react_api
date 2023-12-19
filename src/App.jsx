@@ -9,11 +9,9 @@ function App() {
   return (
     <Router>
         <NavBar />
-      <div className='app'>
-        {/* <h1>React on Rails</h1>
-        <p className='mb-8'>Find this application layout in src/App.js</p> */}
-        <AppRoutes />
-      </div>
+        <div className="container mx-auto flex flex-col items-center">
+          <AppRoutes />
+        </div>
     </Router>
   )
 }
