@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {  API_URL } from '../../constants';
+import { createPost } from "../../../api/postService";
 
 function NewPostForm() {
   const [title, setTitle] = useState('');
@@ -12,21 +12,13 @@ function NewPostForm() {
 
     const postData = { title, body };
 
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postData)
-    });
-
-    if (response.ok) {
-      const { id } = await response.json();
-      navigate(`/posts/${id}`);
-    } else {
-      console.error('Failed to create post');
+    try {
+      const response = await createPost(postData);
+      navigate(`/posts/${response.id}`);
+    } catch (error) {
+      console.error("Error occured", error);
     }
-  }
+  };
 
   return (
     <div className='flex flex-col items-center'>
